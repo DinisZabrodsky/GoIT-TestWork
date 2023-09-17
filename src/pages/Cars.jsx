@@ -1,4 +1,4 @@
-import { CarsItem } from "components/CarsItem/CarsItem"
+import { CarsList } from "components/CarsList/CarsList"
 import { Search } from "components/Search/Search"
 
 
@@ -7,7 +7,7 @@ export function Cars () {
 
         <div>sadasdasd</div>
         <Search/>
-        <CarsItem/>
+        <CarsList/>
     </>
 }
 

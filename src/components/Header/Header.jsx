@@ -11,9 +11,12 @@ function Header () {
             </nav>
         </header>
 
-        <Suspense>
-            <Outlet/>
-        </Suspense>
+        <main>
+            <Suspense>
+                <Outlet/>
+            </Suspense>
+        </main>
+        
     </>
 }
 
