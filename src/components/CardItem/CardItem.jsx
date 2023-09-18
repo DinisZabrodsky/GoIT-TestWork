@@ -1,26 +1,31 @@
 
 import Heart from '../../img/heart-sprite.svg'
+import css from "./CardItem.module.scss"
 
 
 export const CardItem = ({id, make, model, year, img, rentalPrice, favorite, address, rentalCompany, type, accessories}) => {
     
+    const hendeleFavorite = (e) => {
+        console.log(e)
+    }
+
     return <>
-        <li data-id={id}>
-           <div>
+        <li data-id={id} className={css.card}>
+           <div className={css.cardImg}>
                 <img src={img} alt={make} />
-                <span>
+                <span onClick={hendeleFavorite}>
                     <svg>
                         {favorite ? <use href={Heart + "#icon-heart-active"}></use> : <use href={Heart + "#icon-heart-dactive"}></use>}
                     </svg>
                 </span>
             </div> 
 
-            <div>
+            <div className={css.carTitel}>
                 <p>{make} <span>{model}</span>, {year}</p> 
-                <span>{rentalPrice}</span>
+                <span className='titel'>{rentalPrice}</span>
             </div>
 
-            <div>
+            <div className={css.carTag}>
                 <div>
                     <span>{address[2]} | {address[1]} | {rentalCompany} | </span>
                 </div>
@@ -30,7 +35,7 @@ export const CardItem = ({id, make, model, year, img, rentalPrice, favorite, add
                 </div>
             </div>
 
-            <button data-id={id}>
+            <button data-id={id} className={css.carButton}>
                 Learn more
             </button>
         </li>

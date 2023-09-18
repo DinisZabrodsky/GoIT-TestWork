@@ -2,6 +2,7 @@ import { CardItem } from "components/CardItem/CardItem"
 import { useEffect, useState } from "react"
 
 import { allCars } from "service/contorler"
+import css from './CarsList.module.scss'
 
 export const CarsList = () => {
 
@@ -14,13 +15,12 @@ export const CarsList = () => {
         dataCars()
         async function dataCars () {
             const data = await allCars()
-            setCarData(data.slice(0, 2))
+            setCarData(data.slice(0, 5))
         }
     }, [])
-    console.log(carData)
 
     return <>
-        <ul>
+        <ul className={css.list}>
             {carData.map(Car => {
                 return <CardItem key={Car.id} id={Car.id} make={Car.make} model={Car.model} year={Car.year} img={Car.img} rentalPrice={Car.rentalPrice} favorite={Car.favorite} address={Car.address} rentalCompany={Car.rentalCompany} type={Car.type} accessories={Car.accessories}/>
             })}

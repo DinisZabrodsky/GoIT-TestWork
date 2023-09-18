@@ -5,13 +5,13 @@ import { NavLink, Outlet } from "react-router-dom"
 function Header () {
     return <>
         <header>
-            <nav>
+            <nav className="conteiner">
                 <NavLink to="/">Home</NavLink>
                 <NavLink to='cars'>Cars</NavLink>
             </nav>
         </header>
 
-        <main>
+        <main className="conteiner">
             <Suspense>
                 <Outlet/>
             </Suspense>
