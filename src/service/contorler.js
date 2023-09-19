@@ -1,7 +1,7 @@
 import { getCars } from '../api/getCars' 
 import {user} from './user'
 
-let DataCars = []
+export let DataCars = []
 
 export async function allCars () {
     const data = await getCars()

@@ -11,9 +11,6 @@ export const Search = () => {
     const [selectedOption, setSelectedOption] = useState(null)
 
     return <>
-
-    <div>dkfsdkfnsdfnsd</div>
-
     <Select
         defaultValue={selectedOption}
         onChange={setSelectedOption}

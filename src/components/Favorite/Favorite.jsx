@@ -1,17 +1,17 @@
-import { CardItem } from "components/CardItem/CardItem"
 import { useEffect, useState } from "react"
 
 import { DataCars, allCars } from "service/contorler"
+import { CardItem } from "../CardItem/CardItem"
 import { user } from "service/user"
 
-import css from './CarsList.module.scss'
+import css from './Favorit.module.scss'
 import { CarModal } from "components/CarModal/CarModal"
 
-const limitPage = 8
-let page = 1
+// const limitPage = 8
+// let page = 1
 let modalData = {}
 
-export const CarsList = () => {
+export const Favorite = () => {
 
     const [carData, setCarData] = useState([])
     const [showModal, setShowModal] = useState(false)
@@ -21,7 +21,7 @@ export const CarsList = () => {
         dataCars()
         async function dataCars () {
             const data = await allCars()
-            setCarData(data.slice(0, 8))
+            setCarData(data)
         }
     }, [])
 
@@ -70,26 +70,31 @@ export const CarsList = () => {
         setShowModal(false)
     }
 
-    const handleLoadMore = () => {
-        page += 1
-        const data = DataCars.slice((page * 8 - 8), (page * 8))
+    // const handleLoadMore = () => {
+    //     page += 1
+    //     const data = DataCars.slice((page * 8 - 8), (page * 8))
 
-        setCarData((prev) => {return [...prev, ...data]})
+    //     setCarData((prev) => {return [...prev, ...data]})
         
-    }
+    // }
 
     return <>
         {showModal && <CarModal close={handleClosemodal} data={modalData}/>}
 
         <ul className={css.list}>
             {carData.map(Car => {
-                return <CardItem key={Car.id} id={Car.id} make={Car.make} model={Car.model} year={Car.year} img={Car.img} rentalPrice={Car.rentalPrice} favorite={Car.favorite} address={Car.address} rentalCompany={Car.rentalCompany} type={Car.type} accessories={Car.accessories} hadeleFavorite={hadeleFavorite} btnLearn={btnLearn}/>
+                if(Car.favorite) {
+                    return <CardItem key={Car.id} id={Car.id} make={Car.make} model={Car.model} year={Car.year} img={Car.img} rentalPrice={Car.rentalPrice} favorite={Car.favorite} address={Car.address} rentalCompany={Car.rentalCompany} type={Car.type} accessories={Car.accessories} hadeleFavorite={hadeleFavorite} btnLearn={btnLearn}/>
+                }
+
+                return
+                
             })}
             
         </ul>
 
-        {(Number(DataCars.length) - (page * limitPage) >= 0) && <button  className={css.buttonLoad} onClick={handleLoadMore}>
+        {/* {(Number(DataCars.length) - (page * limitPage) >= 0) && <button  className={css.buttonLoad} onClick={handleLoadMore}>
             LoadMore
-        </button>}
+        </button>} */}
     </>
 }

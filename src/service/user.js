@@ -1,16 +1,18 @@
 
 
 function UserData () {
-    const favorites = [9582, 9584]
+    let favorites = []
     let firstStart = true
 
     const setLocalStr = () => {
+        localStorage.removeItem("favorites")
         localStorage.setItem("favorites", JSON.stringify(favorites))
     }
 
     const getLocalStr = () => {
         if (localStorage.getItem("favorites") && firstStart === true) {
-            favorites.push(JSON.parse(localStorage.getItem("favorites")))
+
+            favorites.push(...JSON.parse(localStorage.getItem("favorites")))
             firstStart = false
             return
         }
@@ -30,7 +32,7 @@ function UserData () {
         },
 
         deleteFavorites(id) {
-            favorites.filter(element => element.id === id)
+            favorites = favorites.filter(Elid => Elid !== id)
             setLocalStr()
         },
 
