@@ -3,9 +3,8 @@ import closeSVG from '../../img/x.svg'
 import css from './CarModal.module.scss'
 
 export const CarModal = ({close, data}) => {
-    console.log(`data => ${data}`)
     return <>
-        <div className={css.bacdrop} onClick={close}>
+        <div className={css.bacdrop} onClick={close} data-modal="modal">
             <div className={css.modal}>
                 <button className={css.closeModal} onClick={close}><img src={closeSVG} alt='close modal' /></button>
                 
@@ -51,9 +50,9 @@ export const CarModal = ({close, data}) => {
                     <span>Price : <span>{data.rentalPrice}</span></span>
                 </div>
 
-                <button className={css.modalButton}>
+                <a  href="tel:+380730000000" className={css.modalButton}>
                 Rental car
-                </button>
+                </a>
             </div>
         </div>
     </>

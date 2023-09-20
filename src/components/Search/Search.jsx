@@ -1,21 +1,89 @@
 import { useState } from 'react';
-import Select from 'react-select';
+import Selector from 'react-select';
 
-const options = [
-    { value: 'chocolate', label: 'Chocolate' },
-    { value: 'strawberry', label: 'Strawberry' },
-    { value: 'vanilla', label: 'Vanilla' },
-  ];
+import './Search.modules.scss'
+
+const DataCars = [
+  "Buick",
+  "Volvo",
+  "HUMMER",
+  "Subaru",
+  "Mitsubishi",
+  "Nissan",
+  "Lincoln",
+  "GMC",
+  "Hyundai",
+  "MINI",
+  "Bentley",
+  "Mercedes-Benz",
+  "Aston Martin",
+  "Pontiac",
+  "Lamborghini",
+  "Audi",
+  "BMW",
+  "Chevrolet",
+  "Mercedes-Benz",
+  "Chrysler",
+  "Kia",
+  "Land"
+]
+const optionsCars = DataCars.map(el => {return { value: el, label: el }})
+
+const DataPrice = [
+  '10',
+  '20',
+  '30',
+  '40',
+  '50',
+  '60',
+  '70',
+  '80',
+  '90',
+  '100',
+]
+const optionsPrice = DataPrice.map(el => {return { value: el, label: el }})
 
 export const Search = () => {
-    const [selectedOption, setSelectedOption] = useState(null)
+    const [modelOption, setModelOption] = useState({value: null, label: 'Enter the text'})
+    const [priceOption, setPriceOption] = useState({value: null, label: 'To $'})
 
     return <>
-    <Select
-        defaultValue={selectedOption}
-        onChange={setSelectedOption}
-        options={options}
-      />
+      <form action="search" className='form'>
+        <label>
+        Car brand
+          <Selector
+            className='selectorOne'
+            defaultValue={modelOption}
+            onChange={setModelOption}
+            options={optionsCars}
+            
+          />
+        </label>
 
+        <label>
+          Price/ 1 hour
+          <Selector
+            className='selectorTwo'
+            defaultValue={priceOption}
+            options={optionsPrice}
+            onChange={setPriceOption}
+          />
+        </label>
+    
+
+        <label htmlFor='СarMileage' className='carMileage '>
+          Сar mileage / km
+
+          <div>
+            <input type="text" name="from" id="СarMileage" defaultValue='From ' />
+            <input type="text" name="to" id="СarMileage" defaultValue='To '  />
+          </div>
+        </label>
+
+        <button className='searchButton'>
+          Search
+        </button>
+      </form>
     </>
 }
+

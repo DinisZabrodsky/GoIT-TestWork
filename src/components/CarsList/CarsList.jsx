@@ -66,8 +66,12 @@ export const CarsList = () => {
         return
     }
 
-    const handleClosemodal = () => {
-        setShowModal(false)
+    const handleClosemodal = (e) => {
+        if((e.target.dataset.modal || e.target.nodeName === "IMG")) {
+            setShowModal(false)
+        }
+
+        return
     }
 
     const handleLoadMore = () => {
