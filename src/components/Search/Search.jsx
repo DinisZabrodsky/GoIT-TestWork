@@ -1,8 +1,6 @@
 import { useState } from 'react';
 import Selector from 'react-select';
 
-import './Search.modules.scss'
-
 const DataCars = [
   "Buick",
   "Volvo",
@@ -71,7 +69,7 @@ export const Search = () => {
         </label>
     
 
-        <label htmlFor='СarMileage' className='carMileage '>
+        <label htmlFor='СarMileage' className='carMileage'>
           Сar mileage / km
 
           <div>
