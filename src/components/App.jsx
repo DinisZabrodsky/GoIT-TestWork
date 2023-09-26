@@ -6,6 +6,8 @@ const Home = lazy(() => import('../pages/Home'))
 const Cars = lazy(() => import('../pages/Cars'))
 const Favorite = lazy(() => import('../pages/FavoritePage'))
 
+// import './App.scss'
+
 export const App = () => {
   return <>
   

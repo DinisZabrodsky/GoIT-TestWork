@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import Selector from 'react-select';
 
+import css from './Search.module.scss'
+
 const DataCars = [
   "Buick",
   "Volvo",
@@ -46,11 +48,11 @@ export const Search = () => {
     const [priceOption, setPriceOption] = useState({value: null, label: 'To $'})
 
     return <>
-      <form action="search" className='form'>
+      <form action="search" className={css.form}>
         <label>
         Car brand
           <Selector
-            className='selectorOne'
+            className={css.selectorOne}
             defaultValue={modelOption}
             onChange={setModelOption}
             options={optionsCars}
@@ -61,7 +63,7 @@ export const Search = () => {
         <label>
           Price/ 1 hour
           <Selector
-            className='selectorTwo'
+            className={css.selectorTwo}
             defaultValue={priceOption}
             options={optionsPrice}
             onChange={setPriceOption}
@@ -69,7 +71,7 @@ export const Search = () => {
         </label>
     
 
-        <label htmlFor='СarMileage' className='carMileage'>
+        <label htmlFor='СarMileage' className={css.carMileage}>
           Сar mileage / km
 
           <div>
@@ -78,7 +80,7 @@ export const Search = () => {
           </div>
         </label>
 
-        <button className='searchButton'>
+        <button className={css.searchButton}>
           Search
         </button>
       </form>
